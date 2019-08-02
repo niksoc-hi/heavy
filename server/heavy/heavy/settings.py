@@ -40,11 +40,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_extensions",
     "social_django",
-
-'heavy',
-    'posts',
-    'vote',
-    'taggit',
+    "heavy",
+    "posts",
+    "vote",
+    "taggit",
 ]
 
 MIDDLEWARE = [
@@ -93,7 +92,7 @@ WSGI_APPLICATION = "heavy.wsgi.application"
 
 # Custom User Model
 
-AUTH_USER_MODEL = 'heavy.User'
+AUTH_USER_MODEL = "heavy.User"
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
