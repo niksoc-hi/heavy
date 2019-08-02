@@ -1,5 +1,7 @@
 const Routes = {
-  root: '/home',
-};
+  home: '/home',
+  notifications: '/notifications',
+  users: '/users',
+}
 
-export default Routes;
+export default Routes
