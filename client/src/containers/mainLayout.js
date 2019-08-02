@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Switch } from 'react-router-dom'
-import SideNav from './sidenav'
+import Sidebar from '../components/Sidebar'
 
 import RoutesManager from '../routes/routesManager'
 
@@ -26,11 +26,11 @@ class MainLayout extends React.Component {
     const routesManager = RoutesManager.getInstance()
     return (
       <div className="wrapper">
-        <SideNav>
+        <Sidebar>
           <div className="page-content-wrapper">
             <Switch>{routesManager.getRoutes()}</Switch>
           </div>
-        </SideNav>
+        </Sidebar>
       </div>
     )
   }
