@@ -1,9 +1,17 @@
 from rest_framework import serializers
-from .models import Post
+from .models import Post, Comment
 
 
-class PostSerializer(serializers.ModelSerializer):
+class VoteField:
+    def get_vote(self, instance):
+        user_id = self.context["request"].user.pk
+        vote = instance.votes.get(user_id)
+        return vote.action if vote else None
+
+
+class PostSerializer(VoteField, serializers.ModelSerializer):
     tags = serializers.ListField(source="tags.names", allow_empty=False)
+    vote = serializers.SerializerMethodField()
 
     class Meta:
         fields = "__all__"
@@ -22,3 +30,12 @@ class PostSerializer(serializers.ModelSerializer):
         modified_instance.tags.clear()
         modified_instance.tags.add(*tags["names"])
         return modified_instance
+
+
+class CommentSerializer(VoteField, serializers.ModelSerializer):
+    vote = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Comment
+        fields = "__all__"
+        read_only_fields = ["user", "post"]
