@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = "ii7&320lpdn=mz*zsa!%ahlzl=sqmrm%jkz987ex@l+tp%k4!k"
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -40,11 +38,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_extensions",
     "social_django",
-
-'heavy',
-    'posts',
-    'vote',
-    'taggit',
+    "heavy",
+    "posts",
+    "vote",
+    "taggit",
 ]
 
 MIDDLEWARE = [
@@ -67,6 +64,20 @@ LOGIN_REDIRECT_URL = "home"
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ["SOCIAL_AUTH_GOOGLE_OAUTH2_KEY"]
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ["SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET"]
+
+# https://python-social-auth.readthedocs.io/en/latest/pipeline.html
+SOCIAL_AUTH_PIPELINE = (
+    "social_core.pipeline.social_auth.social_details",
+    "social_core.pipeline.social_auth.social_uid",
+    "social_core.pipeline.social_auth.auth_allowed",
+    "social_core.pipeline.social_auth.social_user",
+    "social_core.pipeline.user.get_username",
+    "social_core.pipeline.user.create_user",
+    "social_core.pipeline.social_auth.associate_user",
+    "social_core.pipeline.social_auth.load_extra_data",
+    "social_core.pipeline.user.user_details",
+    "heavy.pipeline.save_profile_img",
+)
 
 ROOT_URLCONF = "heavy.urls"
 
@@ -93,7 +104,7 @@ WSGI_APPLICATION = "heavy.wsgi.application"
 
 # Custom User Model
 
-AUTH_USER_MODEL = 'heavy.User'
+AUTH_USER_MODEL = "heavy.User"
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -104,7 +115,6 @@ DATABASES = {
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -118,7 +128,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -131,7 +140,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
