@@ -1,0 +1,20 @@
+.notes {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.notes__create--item {
+  width: 576px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.notes__container--items {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1em;
+}

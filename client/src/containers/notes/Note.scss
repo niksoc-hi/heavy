@@ -1,0 +1,18 @@
+.note__card {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 2rem;
+  margin: .5rem !important;
+  & h3 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  & span {
+    font-size: 1.1rem;
+  }
+}
+
+.note__delete--button {
+  display: block;
+  margin-top: 1rem;
+}
