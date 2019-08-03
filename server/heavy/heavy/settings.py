@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+import django_heroku
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_extensions",
     "social_django",
+    "corsheaders",
+
     "heavy",
     "posts",
     "vote",
@@ -152,3 +156,7 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+django_heroku.settings(locals())

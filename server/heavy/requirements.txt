@@ -7,15 +7,19 @@ chardet==3.0.4
 Click==7.0
 decorator==4.4.0
 defusedxml==0.6.0
+dj-database-url==0.5.0
 Django==2.2.4
+django-cors-headers==3.0.2
 django-dotenv==1.4.2
 django-extensions==2.2.1
 django-filter==2.2.0
+django-heroku==0.3.1
 django-rest-framework==0.1.0
 django-taggit==1.1.0
 django-vote==2.1.7
 djangorestframework==3.10.2
 drf-extensions==0.5.0
+gunicorn==19.9.0
 idna==2.8
 ipython==7.7.0
 ipython-genutils==0.2.0
@@ -25,6 +29,7 @@ parso==0.5.1
 pexpect==4.7.0
 pickleshare==0.7.5
 prompt-toolkit==2.0.9
+psycopg2==2.8.3
 ptyprocess==0.6.0
 Pygments==2.4.2
 PyJWT==1.7.1
@@ -41,3 +46,4 @@ toml==0.10.0
 traitlets==4.3.2
 urllib3==1.25.3
 wcwidth==0.1.7
+whitenoise==4.1.3
