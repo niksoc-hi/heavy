@@ -28,7 +28,11 @@ const Post = props => {
       <Card style={{ width: '50em' }}>
         <div className="post-header">
           <div className="author-img">
-            <img src={data.user.profile_img_url} alt="user" className="img" />
+            <img
+              src={_.get(data, 'user.profile_img_url', user)}
+              alt="user"
+              className="img"
+            />
           </div>
           <div className="author-info">
             <div className="name">{`${_.get(

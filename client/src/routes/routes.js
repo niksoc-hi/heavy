@@ -6,6 +6,7 @@ const Routes = {
   profile: '/me',
   notes: '/notes',
   userProfile: '/users/:id',
+  team: '/team/',
 }
 
 export default Routes

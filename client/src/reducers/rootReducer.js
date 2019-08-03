@@ -11,4 +11,5 @@ export default combineReducers({
   notifications: notificationsReducer,
   notes: noteReducer,
   currentUser: userReducer,
+  users: userReducer,
 })

@@ -158,7 +158,7 @@ export const createPost = post => {
 export const getPostsByUser = userId => {
   return async dispatch => {
     try {
-      const url = `api/v1/posts/?userId=${userId}`
+      const url = `api/v1/posts/?user=${userId}`
       const response = await API.get(url)
       dispatch(GET_USER_POSTS_SUCCESS(response.data))
     } catch (error) {

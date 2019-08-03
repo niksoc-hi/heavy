@@ -25,14 +25,22 @@ const NewPost = props => {
   }
 
   const renderNewPostCard = () => {
+    const { currentUser } = props
     return (
       <Card style={{ width: '50em' }}>
         <div className="post-header">
           <div className="author-img">
-            <img src={user} alt="user" className="img" />
+            <img
+              src={_.get(currentUser, 'profile_img_url', user)}
+              alt="user"
+              className="img"
+            />
           </div>
           <div className="author-info">
-            <div className="name">John Appleseed</div>
+            <div className="name">
+              {_.get(currentUser, 'first_name', 'user')}{' '}
+              {_.get(currentUser, 'last_name', '')}
+            </div>
           </div>
           <div className="post-tags">
             <TagInputField
@@ -68,7 +76,9 @@ const NewPost = props => {
   return <div className="new-post">{renderNewPostCard()}</div>
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  currentUser: _.get(state, 'users.currentUser', {}),
+})
 const mapDispatchToProps = dispatch => ({
   createPost: body => dispatch(createPost(body)),
 })
