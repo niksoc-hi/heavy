@@ -9,11 +9,7 @@ export default (state = [], action) => {
       const fetchedNotes = [...action.payload.data.results]
       return [...fetchedNotes]
     case 'DELETE_NOTE':
-      if (state.length === 0) {
-        return []
-      } else {
-        return [...state.filter(note => note.id !== action.payload)]
-      }
+      return [...state.filter(note => note.id !== action.payload)]
     default:
       return state
   }

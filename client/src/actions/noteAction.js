@@ -15,10 +15,10 @@ const FETCH_NOTES = payload => {
   }
 }
 
-const DELETE_NOTE = payload => {
+const DELETE_NOTE = id => {
   return {
-    type: ActionTypes.FETCH_NOTES,
-    payload: payload.id,
+    type: ActionTypes.DELETE_NOTE,
+    payload: id,
   }
 }
 
@@ -86,7 +86,7 @@ export const deleteNoteAction = id => {
             '3fTLuxrIoR4gMLFbufrLcKGBrmis7P2uSqOmQLMPtqh2CZI6AS2mFAHVkdpDQvAK',
         },
       })
-      .then(response => {
+      .then(() => {
         dispatch(DELETE_NOTE(id))
       })
       .catch(err => {

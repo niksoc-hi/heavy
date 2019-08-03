@@ -4,16 +4,16 @@ import { deleteNoteAction } from '../../actions/noteAction'
 import { Card, Button } from 'antd'
 import './Note.scss'
 
-function Note({ id, title, description, deleteNote }) {
+function Note(props) {
   return (
     <Card className="note__card">
-      <h3>{title}</h3>
-      <span>{description}</span>
+      <h3>{props.title}</h3>
+      <span>{props.description}</span>
       <Button
         className="note__delete--button"
         type="danger"
         onClick={e => {
-          deleteNote(id)
+          props.deleteNote(props.id)
         }}
       >
         Delete
