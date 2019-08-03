@@ -7,7 +7,7 @@ from .models import Post, Comment
 class PostSerializer(VoteField, Humanize, serializers.ModelSerializer):
     tags = serializers.ListField(source="tags.names", allow_empty=False)
     vote = serializers.SerializerMethodField()
-    user = UserSerializer()
+    user = UserSerializer(read_only=True)
     created_on = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
 
