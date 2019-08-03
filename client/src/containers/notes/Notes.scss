@@ -1,5 +1,17 @@
-.notes__container {
+.notes {
+  width: 100%;
+  padding: 1rem;
+}
+
+.notes__create--item {
   width: 576px;
   margin: 0 auto;
-  padding: 1rem;
+}
+
+.notes__container--items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
 }

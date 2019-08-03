@@ -1,14 +1,33 @@
 import React from 'react'
-import { Card } from 'antd'
+import { connect } from 'react-redux'
+import { deleteNoteAction } from '../../actions/noteAction'
+import { Card, Button } from 'antd'
 import './Note.scss'
 
-function Note({ title, content }) {
+function Note({ id, title, description, deleteNote }) {
   return (
     <Card className="note__card">
       <h3>{title}</h3>
-      <span>{content}</span>
+      <span>{description}</span>
+      <Button
+        className="note__delete--button"
+        type="danger"
+        onClick={e => {
+          e.preventDefault()
+          deleteNote(id)
+        }}
+      >
+        Delete
+      </Button>
     </Card>
   )
 }
 
-export default Note
+const mapDispatchToProps = dispatch => ({
+  deleteNote: id => dispatch(deleteNoteAction(id)),
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Note)

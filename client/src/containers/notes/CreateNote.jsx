@@ -7,15 +7,19 @@ import './CreateNote.scss'
 class CreateNote extends Component {
   state = {
     title: '',
-    text: '',
+    description: '',
   }
 
   handleTextChange = e => {
-    this.setState({ ...this.state, text: e.target.value })
+    this.setState({ ...this.state, description: e.target.value })
   }
 
   handleTitleChange = e => {
     this.setState({ ...this.state, title: e.target.value })
+  }
+
+  clearInput = () => {
+    this.setState({ title: '', description: '' })
   }
 
   render() {
@@ -31,12 +35,21 @@ class CreateNote extends Component {
         <textarea
           placeholder="Take a note"
           className="note__text"
-          value={this.state.text}
+          value={this.state.description}
           onChange={this.handleTextChange}
         />
         <div>
-          <Button type="primary" onClick={e => addNote({ ...this.state })}>
+          <Button
+            type="primary"
+            onClick={e => {
+              this.clearInput()
+              addNote({ ...this.state })
+            }}
+          >
             Add Note
+          </Button>
+          <Button type="danger" onClick={this.clearInput}>
+            Clear
           </Button>
         </div>
       </section>
