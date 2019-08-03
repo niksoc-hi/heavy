@@ -4,6 +4,7 @@ const Routes = {
   users: '/users',
   postDetails: '/posts/:id',
   profile: '/me',
+  notes: '/notes',
 }
 
 export default Routes

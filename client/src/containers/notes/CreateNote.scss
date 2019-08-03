@@ -1,0 +1,33 @@
+.createNote--container {
+  border-color: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  padding: 2rem;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.note__input {
+  display: block;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.note__text {
+  display: block;
+  outline: none;
+  border: none;
+  border-bottom: none;
+  padding: 1rem;
+  width: 100%;
+  font-size: 0.75rem;
+  font-family: 'Arial';
+  resize: none;
+}

@@ -1,7 +1,9 @@
 import React from 'react'
 import Routes from './routes'
 import { Route } from 'react-router-dom'
+import Notes from '../containers/notes'
 const Home = React.lazy(() => import('../containers/home/home'))
+
 const PostDetails = React.lazy(() =>
   import('../containers/postDetail/postDetail')
 )
@@ -30,6 +32,8 @@ class RoutesManager {
         return Notifications
       case Routes.profile:
         return Profile
+      case Routes.notes:
+        return Notes
       default:
         return Home
     }
