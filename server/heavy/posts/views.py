@@ -1,3 +1,4 @@
+from django.db.models import Q
 from rest_framework import filters
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.viewsets import ModelViewSet
@@ -13,6 +14,15 @@ class PostViewSet(VoteRoutes, NestedViewSetMixin, ModelViewSet):
     serializer_class = PostSerializer
     filter_backends = [filters.SearchFilter]
     search = ["tags__name"]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_term = self.request.query_params.get('search')
+        if search_term:
+            queryset = queryset.filter(
+                Q(tags__name__in=[search_term]) | Q(tags__slug__in=[search_term])
+            ) | queryset.filter(title__contains=search_term)
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
