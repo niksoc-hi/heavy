@@ -11,16 +11,8 @@ import { notification } from 'antd'
 const apiHeaders = () => ({
   Accept: 'application/json',
   'Content-Type': 'application/json',
-  X_BUSINESS_VERTICAL: _.get(
-    getStore().getState(),
-    'authValues.selectedBusinessVertical.value',
-    ''
-  ),
-  X_BUSINESS_LINE: _.get(
-    getStore().getState(),
-    'authValues.selectedBusinessLine.id',
-    ''
-  ),
+  'X-CSRFTOKEN':
+    'iaSM2ickFD0CJI4qtf8gGjIZ8p05FJoYauPJvGup5znfq42BiVKqYVXMmqcjVJtI',
 })
 
 class API {
@@ -72,7 +64,7 @@ class API {
       baseURL,
       url: `${route}`,
       timeout: 30000,
-      withCredentials: true,
+      withCredentials: false,
     }
     API.fireRequest(route) // push request into queue.
     return axios(axiosConfig)
