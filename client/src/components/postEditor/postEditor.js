@@ -14,18 +14,23 @@ const converter = new Showdown.Converter({
 export default function PostEditor(props) {
   const [value, setValue] = React.useState('')
   const [selectedTab, setSelectedTab] = React.useState('write')
+
+  const onChange = value => {
+    setValue(value)
+    props.onChange && props.onChange(converter.makeHtml(value))
+  }
+
   return (
     <div className="editor-field-container">
       <ReactMde
         value={value}
-        onChange={setValue}
+        onChange={onChange}
         selectedTab={selectedTab}
         onTabChange={setSelectedTab}
         generateMarkdownPreview={markdown => {
-          console.log(converter.makeHtml(markdown))
           return Promise.resolve(converter.makeHtml(markdown))
         }}
-        {...props}
+        textAreaProps={props.textAreaProps}
       />
     </div>
   )

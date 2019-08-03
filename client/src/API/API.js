@@ -84,7 +84,6 @@ class API {
     notification.close('APIError')
     notification.error({
       message: 'Something went wrong',
-      description: errorMsg,
       key: 'APIError',
     })
     if (

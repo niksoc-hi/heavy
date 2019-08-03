@@ -4,6 +4,8 @@ import { Switch } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
 import ActivityIndicator from '../components/activityIndicator/activityIndicator'
 import RoutesManager from '../routes/routesManager'
+import { withCookies, Cookies } from 'react-cookie'
+import { getCurrentUser } from '../actions/userActions'
 
 import './mainLayout.styles.scss'
 import { Spin } from 'antd'
@@ -18,7 +20,15 @@ class MainLayout extends React.Component {
     return { hasError: true }
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { cookies, getCurrentUser } = this.props
+    cookies.set(
+      'csrftoken',
+      'iaSM2ickFD0CJI4qtf8gGjIZ8p05FJoYauPJvGup5znfq42BiVKqYVXMmqcjVJtI'
+    )
+    cookies.set('sessionid', 'il2mxzucfr78jflie7qhu7whmrdrqo6u')
+    getCurrentUser()
+  }
 
   componentDidUpdate(prevProps) {}
 
@@ -39,8 +49,10 @@ class MainLayout extends React.Component {
   }
 }
 const mapStateToProps = state => ({})
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  getCurrentUser: () => dispatch(getCurrentUser()),
+})
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainLayout)
+)(withCookies(MainLayout))

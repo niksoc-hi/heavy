@@ -40,11 +40,13 @@
     .post-content-bg {
       font-size: 0.9em;
       overflow: hidden;
-      text-overflow: ellipsis;      
+      text-overflow: ellipsis;    
+      margin-bottom: 1em;  
     }
 
     .post-content-sm {
       font-size: 2em;
+      margin-bottom: 1em;
     }
   }
 

@@ -31,6 +31,7 @@ class RoutesManager {
       case Routes.notifications:
         return Notifications
       case Routes.profile:
+      case Routes.userProfile:
         return Profile
       case Routes.notes:
         return Notes

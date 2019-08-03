@@ -4,6 +4,7 @@ import _ from '../utils/lodashUtils'
 function init() {
   return {
     allPosts: [],
+    currentUserPosts: [],
   }
 }
 
@@ -16,11 +17,16 @@ export const postsReducer = (state = init(), action) => {
       }
     case ActionTypes.GET_POST_DETAIL_SUCCESS:
       return {
-	...state,
-	[action.data.id]: action.data,
+        ...state,
+        [action.data.id]: action.data,
+      }
+
+    case ActionTypes.GET_USER_POSTS_SUCCESS:
+      return {
+        ...state,
+        currentUserPosts: _.get(action, 'data', []),
       }
     default:
       return state
   }
 }
-

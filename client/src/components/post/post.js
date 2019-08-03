@@ -8,11 +8,13 @@ import { upVotePost, downVotePost } from '../../actions/postActions'
 import { connect } from 'react-redux'
 
 import _ from '../../utils/lodashUtils'
+import { navigateToUrl } from '../../utils/navigationUtils'
 
 const { Paragraph } = Typography
 
 const Post = props => {
   const onClick = event => {
+    navigateToUrl(`/posts/${_.get(props, 'data.id')}`)
     props.onClick && props.onClick(1)
   }
 
@@ -22,7 +24,6 @@ const Post = props => {
     const { data } = props
     const isLong =
       Helpers.countCharactersInString(_.get(data, 'description', '')) > 45
-    console.log(props)
     return (
       <Card style={{ width: '50em' }}>
         <div className="post-header">
@@ -30,10 +31,11 @@ const Post = props => {
             <img src={data.user.profile_img_url} alt="user" className="img" />
           </div>
           <div className="author-info">
-            <div className="name">{`${_.get(data, 'user.first_name')} ${_.get(
+            <div className="name">{`${_.get(
               data,
-              'user.last_name'
-            )}`}</div>
+              'user.first_name',
+              'User'
+            )} ${_.get(data, 'user.last_name')}`}</div>
             <div className="post-time">{_.get(data, 'created_on')}</div>
           </div>
           <div className="post-tags">
@@ -51,10 +53,21 @@ const Post = props => {
           <div className={`post-content-${isLong ? 'bg' : 'sm'}`}>
             {isLong && (
               <Paragraph ellipsis={{ rows: 3, expandable: true }}>
-                {_.get(data, 'description', 'description')}{' '}
+                {/* {_.get(data, 'description', 'description')}{' '} */}
+                {/* {Helpers.HTMLParser(_.get(data, 'description', 'description'))} */}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `${_.get(data, 'description', 'description')}`,
+                  }}
+                />
               </Paragraph>
             )}
-            {!isLong && _.get(data, 'description', 'description')}
+            {/* {!isLong && _.get(data, 'description', 'description')} */}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: `${_.get(data, 'description', 'description')}`,
+              }}
+            />
           </div>
         </div>
         <div className="post-actions">
@@ -70,7 +83,7 @@ const Post = props => {
             >
               Upvote
             </Button>
-            {_.get(data, 'num_vote_up', 0)} upvotes
+            {_.get(data, 'num_vote_up', 0)} upvote
           </div>
           <div className="action">
             <Button

@@ -31,17 +31,37 @@ const GET_POST_DETAIL_FAILURE = error => {
   }
 }
 
-const CREATE_USER_POST_SUCCESS = () => {}
+const CREATE_USER_POST_SUCCESS = data => {
+  return {
+    type: ActionTypes.CREATE_USER_POST_SUCCESS,
+    data,
+  }
+}
+const CREATE_USER_POST_FAILURE = error => {
+  return {
+    type: ActionTypes.CREATE_USER_POST_FAILURE,
+    error,
+  }
+}
 
-const GET_USER_POSTS_SUCCESS = () => {}
-const GET_USER_POSTS_FAILURE = () => {}
+const GET_USER_POSTS_SUCCESS = data => {
+  return {
+    type: ActionTypes.GET_USER_POSTS_SUCCESS,
+    data,
+  }
+}
+const GET_USER_POSTS_FAILURE = error => {
+  return {
+    type: ActionTypes.GET_USER_POSTS_FAILURE,
+    error,
+  }
+}
 
 export const getAllPosts = () => {
   return async dispatch => {
     try {
       const url = `api/v1/posts/`
       const response = await API.get(url)
-      console.log(response, 'resp')
       dispatch(GET_ALL_POSTS_SUCCESS(response.data))
     } catch (error) {
       console.log(error)
@@ -50,8 +70,7 @@ export const getAllPosts = () => {
   }
 }
 
-
-export const getPostDetail = (postId) => {
+export const getPostDetail = postId => {
   return async dispatch => {
     try {
       const url = `api/v1/posts/${postId}/`
@@ -116,6 +135,32 @@ export const downVotePost = id => {
 
       dispatch(DOWNVOTE_POST_SUCCESS(response.data))
       dispatch(getAllPosts())
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const createPost = post => {
+  return async dispatch => {
+    try {
+      const url = `api/v1/posts/`
+      const response = await API.post(url, post)
+      console.log(response, 'resp')
+      dispatch(CREATE_USER_POST_SUCCESS(response.data))
+      dispatch(getAllPosts())
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const getPostsByUser = userId => {
+  return async dispatch => {
+    try {
+      const url = `api/v1/posts/?userId=${userId}`
+      const response = await API.get(url)
+      dispatch(GET_USER_POSTS_SUCCESS(response.data))
     } catch (error) {
       console.log(error)
     }
