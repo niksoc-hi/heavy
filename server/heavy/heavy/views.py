@@ -7,6 +7,7 @@ from common import UserSerializer
 
 
 def home(request):
+    print(request.user)
     if not request.user.is_authenticated:
         return redirect("login")
     return render(request, "app.html")

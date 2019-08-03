@@ -1,12 +1,15 @@
 from notifications.models import Notification
 from rest_framework import serializers
 
+from django.contrib.humanize.templatetags.humanize import naturaltime
+
+
 from heavy.models import User
 
 
 class NotificationActorSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ("id", "username")
+        fields = ("id", "username", "profile_img_url")
         model = User
 
 
@@ -29,6 +32,7 @@ class NotificationSerializer(serializers.ModelSerializer):
     actor = NotificationActorSerializer()
     action_object = ActionableModelSerializer()
     target_object = serializers.SerializerMethodField()
+    time_since = serializers.SerializerMethodField()
 
     class Meta:
         fields = "__all__"
@@ -36,3 +40,6 @@ class NotificationSerializer(serializers.ModelSerializer):
 
     def get_target_object(self, obj):
         return ActionableModelSerializer(obj.target).data
+
+    def get_time_since(self, obj):
+        return naturaltime(obj.timestamp)

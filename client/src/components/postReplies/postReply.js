@@ -17,6 +17,7 @@ const title = "What's new with React 16.x"
 export const PostReply = props => {
   const text = longText
   const isLong = Helpers.countCharactersInString(text) > 25
+  const {data} = props
 
   const onClick = event => {
     props.onClick && props.onClick(1)
@@ -27,18 +28,18 @@ export const PostReply = props => {
       <Card style={{ width: '50em' }}>
         <div className="post-header">
           <div className="author-img">
-            <img src={user} alt="user" className="img" />
+            <img src={data.user.profile_img_url} alt="user" className="img" />
           </div>
           <div className="author-info">
-            <div className="name">John Appleseed</div>
-            <div className="post-time">Just now</div>
+        <div className="name">{data.user.username}</div>
+        <div className="post-time">{data.user.created_on}</div>
           </div>
         </div>
         <div className="post-content-container">
           <div className={`post-content-${isLong ? 'bg' : 'sm'}`}>
             {isLong && (
               <Paragraph ellipsis={{ rows: 3, expandable: true }}>
-                {text}
+                {data.description}
               </Paragraph>
             )}
             {!isLong && text}

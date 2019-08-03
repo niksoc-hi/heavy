@@ -4,12 +4,25 @@ from common import Humanize, VoteField, UserSerializer
 from .models import Post, Comment
 
 
+class CommentSerializer(VoteField, Humanize, serializers.ModelSerializer):
+    vote = serializers.SerializerMethodField()
+    user = UserSerializer()
+    created_on = serializers.SerializerMethodField()
+    updated_at = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Comment
+        fields = "__all__"
+        read_only_fields = ["user", "post"]
+
+
 class PostSerializer(VoteField, Humanize, serializers.ModelSerializer):
     tags = serializers.ListField(source="tags.names", allow_empty=False)
     vote = serializers.SerializerMethodField()
     user = UserSerializer(read_only=True)
     created_on = serializers.SerializerMethodField()
     updated_at = serializers.SerializerMethodField()
+    comments = CommentSerializer(many=True)
 
     class Meta:
         fields = "__all__"
@@ -28,15 +41,3 @@ class PostSerializer(VoteField, Humanize, serializers.ModelSerializer):
         modified_instance.tags.clear()
         modified_instance.tags.add(*tags["names"])
         return modified_instance
-
-
-class CommentSerializer(VoteField, Humanize, serializers.ModelSerializer):
-    vote = serializers.SerializerMethodField()
-    user = UserSerializer()
-    created_on = serializers.SerializerMethodField()
-    updated_at = serializers.SerializerMethodField()
-
-    class Meta:
-        model = Comment
-        fields = "__all__"
-        read_only_fields = ["user", "post"]

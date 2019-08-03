@@ -15,7 +15,7 @@ class NotificationViewSet(
     serializer_class = NotificationSerializer
 
     def get_queryset(self):
-        return self.request.user.notifications
+        return self.request.user.notifications.all()
 
     @action(detail=True)
     def mark_read(self):
