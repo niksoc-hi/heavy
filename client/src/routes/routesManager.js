@@ -2,6 +2,9 @@ import React from 'react'
 import Routes from './routes'
 import { Route } from 'react-router-dom'
 const Home = React.lazy(() => import('../containers/home/home'))
+const PostDetails = React.lazy(() =>
+  import('../containers/postDetail/postDetail')
+)
 const Notifications = React.lazy(() =>
   import('../containers/notifications/notifications')
 )
@@ -19,6 +22,8 @@ class RoutesManager {
     switch (path) {
       case Routes.root:
         return Home
+      case Routes.postDetails:
+        return PostDetails
       case Routes.notifications:
         return Notifications
       default:

@@ -1,13 +1,27 @@
 @import '../../styles/mixins.scss';
 
-.home-container {
+.post-details-container{
+  margin: 0 5em;
   .post {
     background: none;
     border: none;
     padding: 0;
     margin: 1em;
   }
-  .post .ant-card .ant-card-body {
+
+  .post-replies {
+    margin-top: 4em;
+  }
+
+  .post-reply {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 1em;
+    margin-left: 3em;
+  }
+
+  .post, .post-reply .ant-card .ant-card-body {
     .post-header {
       display: grid;
       grid-template-columns: 10% 50% 35%;
