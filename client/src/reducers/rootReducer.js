@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import simpleReducer from './simpleReducer';
+import { combineReducers } from 'redux'
+import { activityIndicatorReducer } from './activityIndicatorReducer'
 export default combineReducers({
-  simpleReducer,
-});
+  activityIndicator: activityIndicatorReducer,
+})

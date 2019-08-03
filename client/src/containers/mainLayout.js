@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Switch } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
-
+import ActivityIndicator from '../components/activityIndicator/activityIndicator'
 import RoutesManager from '../routes/routesManager'
 
 import './mainLayout.styles.scss'
@@ -32,6 +32,7 @@ class MainLayout extends React.Component {
               <Switch>{routesManager.getRoutes()}</Switch>
             </React.Suspense>
           </div>
+          <ActivityIndicator />
         </Sidebar>
       </div>
     )
