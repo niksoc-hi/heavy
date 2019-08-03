@@ -24,5 +24,6 @@ urlpatterns = [
     url("^auth/", include("social_django.urls", namespace="social")),
     url("admin/", admin.site.urls),
     url(r"api/v1/", include("posts.urls")),
+    url(r"api/v1/", include("notes.urls")),
     url(r"", home, name="home"),
 ]
