@@ -5,6 +5,8 @@ const Home = React.lazy(() => import('../containers/home/home'))
 const PostDetails = React.lazy(() =>
   import('../containers/postDetail/postDetail')
 )
+const Profile = React.lazy(() => import('../containers/profile/profile'))
+
 const Notifications = React.lazy(() =>
   import('../containers/notifications/notifications')
 )
@@ -26,6 +28,8 @@ class RoutesManager {
         return PostDetails
       case Routes.notifications:
         return Notifications
+      case Routes.profile:
+        return Profile
       default:
         return Home
     }

@@ -6,7 +6,7 @@ import { Spin } from 'antd'
 
 const ActivityIndicator = props => {
   const { requests } = props
-  return !_.isEmpty([1, 2, 3]) ? (
+  return !_.isEmpty(requests) ? (
     <div className="loading-overlay">
       <div>
         <Spin size="large" />

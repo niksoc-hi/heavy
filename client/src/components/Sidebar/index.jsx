@@ -1,15 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Layout, Menu, Icon, Drawer } from 'antd'
 import './sidenav.styles.scss'
 import { navigateToUrl } from '../../utils/navigationUtils'
 
-const { Header, Content, Footer, Sider } = Layout
+const { Header, Content, Sider } = Layout
 
 const pages = [
   { type: 'home', name: 'Home', key: 'home' },
-  { type: 'user', name: 'Users', key: 'users' },
+  { type: 'team', name: 'Team', key: 'team' },
   { type: 'book', name: 'Notes', key: 'notes' },
   { type: 'bell', name: 'Notifications', key: 'notifications' },
+  { type: 'user', name: 'Me', key: 'me' },
 ]
 
 const SideNav = props => {

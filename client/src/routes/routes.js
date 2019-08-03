@@ -3,6 +3,7 @@ const Routes = {
   notifications: '/notifications',
   users: '/users',
   postDetails: '/posts/:id',
+  profile: '/me',
 }
 
 export default Routes
