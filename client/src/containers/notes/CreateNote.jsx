@@ -35,7 +35,9 @@ class CreateNote extends Component {
           onChange={this.handleTextChange}
         />
         <div>
-          <Button onClick={e => addNote({ ...this.state })}>Add Note</Button>
+          <Button type="primary" onClick={e => addNote({ ...this.state })}>
+            Add Note
+          </Button>
         </div>
       </section>
     )

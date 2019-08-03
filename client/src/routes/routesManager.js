@@ -1,8 +1,11 @@
 import React from 'react'
 import Routes from './routes'
 import { Route } from 'react-router-dom'
-import Home from '../containers/home'
-import Notes from '../containers/notes'
+const Notes = React.lazy(() => import('../containers/notes'))
+const Home = React.lazy(() => import('../containers/home/home'))
+const Notifications = React.lazy(() =>
+  import('../containers/notifications/notifications')
+)
 
 class RoutesManager {
   static instance
@@ -15,10 +18,12 @@ class RoutesManager {
 
   getComponentFromPath(path) {
     switch (path) {
-      case Routes.root:
+      case Routes.home:
         return Home
       case Routes.notes:
         return Notes
+      case Routes.notifications:
+        return Notifications
       default:
         return Home
     }

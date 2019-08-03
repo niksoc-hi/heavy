@@ -5,8 +5,8 @@ import Sidebar from '../components/Sidebar'
 
 import RoutesManager from '../routes/routesManager'
 
-// import _ from '../utils/lodashUtils';
-// import './mainLayout.styles.scss';
+import './mainLayout.styles.scss'
+import { Spin } from 'antd'
 
 class MainLayout extends React.Component {
   constructor(props) {
@@ -28,7 +28,9 @@ class MainLayout extends React.Component {
       <div className="wrapper">
         <Sidebar>
           <div className="page-content-wrapper">
-            <Switch>{routesManager.getRoutes()}</Switch>
+            <React.Suspense fallback={<Spin size="large" />}>
+              <Switch>{routesManager.getRoutes()}</Switch>
+            </React.Suspense>
           </div>
         </Sidebar>
       </div>

@@ -1,46 +1,53 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Icon } from 'antd'
+import { Layout, Menu, Icon, Drawer } from 'antd'
 import './sidenav.styles.scss'
+import { navigateToUrl } from '../../utils/navigationUtils'
 
 const { Header, Content, Footer, Sider } = Layout
 
 const pages = [
-  { type: 'user', name: 'Home' },
-  { type: 'video-camera', name: 'Users' },
-  { type: 'upload', name: 'Notes' },
-  { type: 'bar-chart', name: 'Notifications' },
+  { type: 'home', name: 'Home', key: 'home' },
+  { type: 'user', name: 'Users', key: 'users' },
+  { type: 'book', name: 'Notes', key: 'notes' },
+  { type: 'bell', name: 'Notifications', key: 'notifications' },
 ]
 
 class SideNav extends Component {
+  handleNavigation = item => {
+    navigateToUrl(`/${item.key}`)
+  }
+
   render() {
     return (
       <Layout>
-        <Header>Header</Header>
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={true}
+          style={{
+            overflow: 'auto',
+            height: '100vh',
+          }}
+        >
+          <div className="logo" />
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            {pages.map(({ type, name }) => (
+              <Menu.Item key={name} className="menu-item">
+                <Icon type={type} />
+                <span>{name}</span>
+              </Menu.Item>
+            ))}
+          </Menu>
+        </Sider>
         <Layout>
-          <Sider
+          <Header style={{ background: '#fff', padding: 0 }} />
+          <Content
             style={{
-              overflow: 'auto',
-              height: '100vh',
-              position: 'fixed',
-              left: 0,
+              padding: 24,
             }}
           >
-            <div className="logo" />
-            <Menu
-              theme="dark"
-              mode="inline"
-              defaultSelectedKeys={['4']}
-              className="menu"
-            >
-              {pages.map(({ type, name }) => (
-                <Menu.Item key={name} className="menu-item">
-                  <Icon type={type} />
-                  <span>{name}</span>
-                </Menu.Item>
-              ))}
-            </Menu>
-          </Sider>
-          <Content>{this.props.children}</Content>
+            {this.props.children}
+          </Content>
         </Layout>
       </Layout>
     )
@@ -48,3 +55,20 @@ class SideNav extends Component {
 }
 
 export default SideNav
+
+// const Sidebar = () => {
+//   return (
+//     <Drawer
+//       title="Basic Drawer"
+//       placement={'left'}
+//       closable={false}
+//       visible={true}
+//     >
+//       <p>Some contents...</p>
+//       <p>Some contents...</p>
+//       <p>Some contents...</p>
+//     </Drawer>
+//   )
+// }
+
+// export default Sidebar
