@@ -1,0 +1,62 @@
+.profile-container {
+  .profile-head {
+
+  }
+
+  .profile-cover {
+    min-height: 20em;
+    background: rgb(55, 62, 76);
+    .profile-img {
+      height: 20em;
+      border-radius: 50%;
+      position: absolute;
+      top: 10em;
+      left: 38em;
+    }
+  }
+
+  .user-info {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 8em;
+    .name {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .user-name {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+
+    .user-mail {
+      font-size: 1em;
+      font-weight: 500;
+    }
+  }
+
+  .profile-content {
+    display: grid;
+    grid-template-columns: 60% 35%;
+    grid-gap: 5%;
+    margin-left: 5em;
+
+    .user-posts {
+
+    }
+
+    .user-bio {
+      margin-top: 1em;
+    }
+
+    .user-bio-field {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+      margin: 1em 0;
+    }
+
+  }
+}

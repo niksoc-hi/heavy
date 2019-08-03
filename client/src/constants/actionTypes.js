@@ -1,5 +1,7 @@
 const ActionTypes = {
   SIMPLE_ACTION: 'SIMPLE_ACTION',
-};
+  SHOW_ACTIVITY_INDICATOR: 'SHOW_ACTIVITY_INDICATOR',
+  HIDE_ACTIVITY_INDICATOR: 'HIDE_ACTIVITY_INDICATOR',
+}
 
-export default ActionTypes;
+export default ActionTypes

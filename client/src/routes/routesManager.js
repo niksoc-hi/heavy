@@ -1,28 +1,42 @@
-import React from 'react';
-import Routes from './routes';
-import { Route } from 'react-router-dom';
-import Home from '../containers/home';
+import React from 'react'
+import Routes from './routes'
+import { Route } from 'react-router-dom'
+const Home = React.lazy(() => import('../containers/home/home'))
+const PostDetails = React.lazy(() =>
+  import('../containers/postDetail/postDetail')
+)
+const Profile = React.lazy(() => import('../containers/profile/profile'))
+
+const Notifications = React.lazy(() =>
+  import('../containers/notifications/notifications')
+)
 
 class RoutesManager {
-  static instance;
+  static instance
   static getInstance() {
     if (!RoutesManager.instance) {
-      RoutesManager.instance = new RoutesManager();
+      RoutesManager.instance = new RoutesManager()
     }
-    return RoutesManager.instance;
+    return RoutesManager.instance
   }
 
   getComponentFromPath(path) {
     switch (path) {
       case Routes.root:
-        return Home;
+        return Home
+      case Routes.postDetails:
+        return PostDetails
+      case Routes.notifications:
+        return Notifications
+      case Routes.profile:
+        return Profile
       default:
-        return Home;
+        return Home
     }
   }
 
   getRoutes() {
-    const routes = [];
+    const routes = []
     for (const key in Routes) {
       if (Routes.hasOwnProperty(key)) {
         const route = (
@@ -32,12 +46,12 @@ class RoutesManager {
             component={this.getComponentFromPath(Routes[key])}
             key={key}
           />
-        );
-        routes.push(route);
+        )
+        routes.push(route)
       }
     }
-    return routes;
+    return routes
   }
 }
 
-export default RoutesManager;
+export default RoutesManager
