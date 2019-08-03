@@ -1,3 +1,4 @@
+from rest_framework import filters
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_extensions.mixins import NestedViewSetMixin
@@ -10,6 +11,8 @@ from .serializers import PostSerializer, CommentSerializer
 class PostViewSet(VoteRoutes, NestedViewSetMixin, ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    filter_backends = [filters.SearchFilter]
+    search = ["tags__name"]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

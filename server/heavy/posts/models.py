@@ -39,5 +39,5 @@ class Comment(Timestamped, VoteModel, models.Model):
         return "{0} {1}".format(self.post, self.user)
 
     @classmethod
-    def name(self):
+    def name(cls):
         return "comment"
