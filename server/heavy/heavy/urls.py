@@ -25,5 +25,7 @@ urlpatterns = [
     url("admin/", admin.site.urls),
     url(r"api/v1/", include("posts.urls")),
     url(r"api/v1/", include("notes.urls")),
+    url(r"api/v1/", include("tags.urls")),
+    url(r"api/v1/", include("users.urls")),
     url(r"", home, name="home"),
 ]
