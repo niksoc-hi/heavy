@@ -6,7 +6,7 @@ import user from '../../assets/images/user.png'
 import Helpers from '../../utils/helpers'
 import _ from '../../utils/lodashUtils'
 import { navigateToUrl } from '../../utils/navigationUtils'
-import { Post } from '../../components/post/post'
+import Post  from '../../components/post/post'
 import NewPost from '../../components/newPost/newPost'
 import { getAllPosts } from '../../actions/postActions'
 

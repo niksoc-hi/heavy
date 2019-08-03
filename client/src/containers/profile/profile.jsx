@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import user from '../../assets/images/user.png'
 import './profile.styles.scss'
-import { Post } from '../../components/post/post'
+import  Post  from '../../components/post/post'
 import { Card, Icon, Rate } from 'antd'
 
 class Profile extends Component {

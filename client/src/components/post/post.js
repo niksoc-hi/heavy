@@ -4,19 +4,25 @@ import './post.styles.scss'
 import user from '../../assets/images/user.png'
 import Helpers from '../../utils/helpers'
 import PostEditor from '../postEditor/postEditor'
+import { upVotePost, downVotePost } from '../../actions/postActions'
+import { connect } from 'react-redux'
 
 import _ from '../../utils/lodashUtils'
 
 const { Paragraph } = Typography
 
-export const Post = props => {
+const Post = props => {
   const onClick = event => {
     props.onClick && props.onClick(1)
   }
 
+  const upVote = () => {}
+
   const renderPostCard = () => {
     const { data } = props
-    const isLong = Helpers.countCharactersInString(data.description) > 45
+    const isLong =
+      Helpers.countCharactersInString(_.get(data, 'description', '')) > 45
+    console.log(props)
     return (
       <Card style={{ width: '50em' }}>
         <div className="post-header">
@@ -53,13 +59,29 @@ export const Post = props => {
         </div>
         <div className="post-actions">
           <div className="action">
-            <Button type="primary" shape="round" icon="up-circle">
+            <Button
+              type="primary"
+              shape="round"
+              icon="up-circle"
+              onClick={e => {
+                e.stopPropagation()
+                props.upVotePost(props.data.id)
+              }}
+            >
               Upvote
             </Button>
             {_.get(data, 'num_vote_up', 0)} upvotes
           </div>
           <div className="action">
-            <Button type="danger" shape="round" icon="down-circle">
+            <Button
+              type="danger"
+              shape="round"
+              icon="down-circle"
+              onClick={e => {
+                e.stopPropagation()
+                props.downVotePost(props.data.id)
+              }}
+            >
               Downvote
             </Button>
             {_.get(data, 'num_vote_down', 0)} downvotes
@@ -134,3 +156,14 @@ export const Post = props => {
     )
   }
 }
+
+const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({
+  upVotePost: id => dispatch(upVotePost(id)),
+  downVotePost: id => dispatch(downVotePost(id)),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Post)

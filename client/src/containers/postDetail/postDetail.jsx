@@ -3,7 +3,7 @@ import { Card, Typography, Button, Tag, Timeline } from 'antd'
 import user from '../../assets/images/user.png'
 import Helpers from '../../utils/helpers'
 import './postDetail.styles.scss'
-import { Post } from '../../components/post/post'
+import Post  from '../../components/post/post'
 import { PostReply } from '../../components/postReplies/postReply'
 
 const { Paragraph } = Typography
