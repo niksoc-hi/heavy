@@ -80,7 +80,7 @@ export const fetchNotesAction = () => {
 export const deleteNoteAction = id => {
   return async dispatch => {
     axios
-      .delete(`http://localhost:8000/api/v1/notes/${id}`, {
+      .delete(`http://localhost:8000/api/v1/notes/${id}/`, {
         headers: {
           'X-CSRFTOKEN':
             '3fTLuxrIoR4gMLFbufrLcKGBrmis7P2uSqOmQLMPtqh2CZI6AS2mFAHVkdpDQvAK',

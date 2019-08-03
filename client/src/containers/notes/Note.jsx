@@ -13,7 +13,6 @@ function Note({ id, title, description, deleteNote }) {
         className="note__delete--button"
         type="danger"
         onClick={e => {
-          e.preventDefault()
           deleteNote(id)
         }}
       >
