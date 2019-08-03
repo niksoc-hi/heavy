@@ -1,0 +1,34 @@
+.createNote--container {
+  border-color: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  > div {
+    border: 1px solid #e0e0e0;
+    border-top: none;
+  }
+}
+
+.note__input {
+  display: block;
+  outline: none;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  padding: 2rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.note__text {
+  display: block;
+  outline: none;
+  border: none;
+  border-bottom: none;
+  border-right: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  padding: 2rem;
+  width: 100%;
+  font-size: 1rem;
+  font-family: 'Arial';
+  resize: none;
+}
