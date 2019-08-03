@@ -4,6 +4,7 @@ import user from '../../assets/images/user.png'
 import Helpers from '../../utils/helpers'
 import './postDetail.styles.scss'
 import { Post } from '../../components/post/post'
+import { PostReply } from '../../components/postReplies/postReply'
 
 const { Paragraph } = Typography
 const longText =
@@ -25,7 +26,7 @@ class PostDetail extends Component {
   renderPostReply = reply => {
     return (
       <Timeline.Item>
-        <Post className="post-reply" />
+        <PostReply />
       </Timeline.Item>
     )
   }
@@ -33,7 +34,12 @@ class PostDetail extends Component {
   renderPostReplies = () => {
     return (
       <div className="post-replies">
-        <Timeline>{[1, 2, 3].map(() => this.renderPostReply())}</Timeline>
+        <Timeline>
+          {[1, 2, 3].map(() => this.renderPostReply())}
+          <Timeline.Item>
+            <PostReply editable />
+          </Timeline.Item>
+        </Timeline>
       </div>
     )
   }

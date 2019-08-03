@@ -70,5 +70,11 @@
       grid-template-columns: 20% 20% 20%;
       grid-gap: 1em;
     }
+
+    .post-editor-actions {
+      display: grid;
+      grid-template-columns: 15% 15%;
+      grid-gap: 1em;
+    }
   }
 }

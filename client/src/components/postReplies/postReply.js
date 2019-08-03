@@ -1,9 +1,10 @@
 import React from 'react'
 import { Card, Typography, Button, Tag } from 'antd'
-import './post.styles.scss'
+import './postReply.styles.scss'
 import user from '../../assets/images/user.png'
 import Helpers from '../../utils/helpers'
 import PostEditor from '../postEditor/postEditor'
+import { placeholder } from '@babel/types'
 
 const { Paragraph } = Typography
 const longText =
@@ -13,7 +14,7 @@ const shortText = 'I am doing good!'
 
 const title = "What's new with React 16.x"
 
-export const Post = props => {
+export const PostReply = props => {
   const text = longText
   const isLong = Helpers.countCharactersInString(text) > 25
 
@@ -21,7 +22,7 @@ export const Post = props => {
     props.onClick && props.onClick(1)
   }
 
-  const renderPostCard = () => {
+  const renderPostReplyCard = () => {
     return (
       <Card style={{ width: '50em' }}>
         <div className="post-header">
@@ -32,18 +33,8 @@ export const Post = props => {
             <div className="name">John Appleseed</div>
             <div className="post-time">Just now</div>
           </div>
-          <div className="post-tags">
-            <Tag color="geekblue">React</Tag>
-            <Tag color="geekblue">Performace</Tag>
-            <Tag color="geekblue">Tech</Tag>
-          </div>
         </div>
         <div className="post-content-container">
-          <div className="post-content-title">
-            <Paragraph ellipsis={{ rows: 2, expandable: false }}>
-              {title}
-            </Paragraph>
-          </div>
           <div className={`post-content-${isLong ? 'bg' : 'sm'}`}>
             {isLong && (
               <Paragraph ellipsis={{ rows: 3, expandable: true }}>
@@ -68,7 +59,7 @@ export const Post = props => {
     )
   }
 
-  const renderPostEditor = () => {
+  const renderPostReplyEditor = () => {
     return (
       <Card style={{ width: '50em' }}>
         <div className="post-header">
@@ -79,20 +70,10 @@ export const Post = props => {
             <div className="name">John Appleseed</div>
             <div className="post-time">Just now</div>
           </div>
-          <div className="post-tags">
-            <Tag color="geekblue">React</Tag>
-            <Tag color="geekblue">Performace</Tag>
-            <Tag color="geekblue">Tech</Tag>
-          </div>
         </div>
         <div className="post-content-container">
-          <div className="post-content-title">
-            <Paragraph ellipsis={{ rows: 2, expandable: false }}>
-              {title}
-            </Paragraph>
-          </div>
           <div className={`post-content-${isLong ? 'bg' : 'sm'}`}>
-            <PostEditor />
+            <PostEditor textAreaProps={{ placeholder: 'Write a reply' }} />
           </div>
         </div>
         <div className="post-editor-actions">
@@ -105,22 +86,22 @@ export const Post = props => {
 
   if (props.editable) {
     return (
-      <div className="post" {...props}>
-        {renderPostEditor()}
+      <div className="post-reply" {...props}>
+        {renderPostReplyEditor()}
       </div>
     )
   } else {
     return props.clickable ? (
       <button
-        className="post"
+        className="post-reply"
         {...props}
         onClick={props.clickable ? onClick : undefined}
       >
-        {renderPostCard()}
+        {renderPostReplyCard()}
       </button>
     ) : (
-      <div className="post" {...props}>
-        {renderPostCard()}
+      <div className="post-reply" {...props}>
+        {renderPostReplyCard()}
       </div>
     )
   }

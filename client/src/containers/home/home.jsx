@@ -5,6 +5,7 @@ import user from '../../assets/images/user.png'
 import Helpers from '../../utils/helpers'
 import { navigateToUrl } from '../../utils/navigationUtils'
 import { Post } from '../../components/post/post'
+import NewPost from '../../components/newPost/newPost'
 
 class Home extends Component {
   navigateToPostDetails = postId => {
@@ -18,6 +19,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home-container">
+        <NewPost />
         {[1, 2, 3].map(() => this.renderPost())}
       </div>
     )
