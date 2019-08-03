@@ -1,11 +1,10 @@
 from rest_framework import filters
-from rest_framework.mixins import ListModelMixin
-from rest_framework.viewsets import GenericViewSet
+from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from common import User, UserSerializer
 
 
-class UserViewSet(ListModelMixin, GenericViewSet):
+class UserViewSet(ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = [filters.SearchFilter]
