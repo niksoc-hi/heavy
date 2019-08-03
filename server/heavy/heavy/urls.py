@@ -23,6 +23,8 @@ urlpatterns = [
     url(r"^logout/$", logout, name="logout"),
     url("^auth/", include("social_django.urls", namespace="social")),
     url("admin/", admin.site.urls),
+    url("^api/v1/", include("follows.urls")),
+    url("^api/v1/", include("my_notifications.urls")),
     url(r"api/v1/", include("posts.urls")),
     url(r"api/v1/", include("notes.urls")),
     url(r"api/v1/", include("tags.urls")),
