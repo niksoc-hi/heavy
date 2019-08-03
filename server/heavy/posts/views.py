@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.viewsets import ModelViewSet
@@ -12,7 +13,8 @@ from .serializers import PostSerializer, CommentSerializer
 class PostViewSet(VoteRoutes, NestedViewSetMixin, ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['user']
     search = ["tags__name"]
 
     def get_queryset(self):
