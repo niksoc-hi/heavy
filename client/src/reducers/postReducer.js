@@ -14,7 +14,13 @@ export const postsReducer = (state = init(), action) => {
         ...state,
         allPosts: _.get(action, 'data', []),
       }
+    case ActionTypes.GET_POST_DETAIL_SUCCESS:
+      return {
+	...state,
+	[action.data.id]: action.data,
+      }
     default:
       return state
   }
 }
+

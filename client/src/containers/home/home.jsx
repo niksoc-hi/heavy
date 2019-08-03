@@ -14,6 +14,7 @@ class Home extends Component {
   componentDidMount() {
     this.props.getAllPosts()
   }
+
   navigateToPostDetails = postId => {
     navigateToUrl(`/posts/${postId}`)
   }
@@ -36,9 +37,11 @@ class Home extends Component {
 const mapStateToProps = state => ({
   allPosts: _.get(state, 'posts.allPosts.results', []),
 })
+
 const mapDispatchToProps = dispatch => ({
   getAllPosts: () => dispatch(getAllPosts()),
 })
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
