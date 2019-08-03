@@ -1,0 +1,35 @@
+.notifications-container {
+  margin: 0 5em;
+   .notification-card-container {
+     margin: 1em;
+    .ant-card .ant-card-body .notification {
+      display: grid;
+      grid-template-columns: 10% 90%;
+      .user-img {
+        .img {
+          height: 3em;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .details {
+      display: flex;
+    }
+
+    .bold {
+      font-weight: 500;
+      margin: 0 0.5em;
+    }
+
+    .time {
+      display: flex;
+      margin: 0.5em;
+    }
+  }
+}

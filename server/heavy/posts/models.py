@@ -23,6 +23,10 @@ class Post(Timestamped, VoteModel, models.Model):
     def __str__(self):
         return "{0} {1}".format(self.title, self.user)
 
+    @classmethod
+    def name(cls):
+        return "post"
+
 
 class Comment(Timestamped, VoteModel, models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
@@ -33,3 +37,7 @@ class Comment(Timestamped, VoteModel, models.Model):
 
     def __str__(self):
         return "{0} {1}".format(self.post, self.user)
+
+    @classmethod
+    def name(self):
+        return "comment"

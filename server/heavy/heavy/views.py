@@ -1,3 +1,4 @@
+from django.contrib.auth.views import logout_then_login
 from django.shortcuts import render, redirect
 
 
@@ -8,8 +9,10 @@ def home(request):
 
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect("home")
     return render(request, "login.html")
 
 
 def logout(request):
-    return render(request, "logout.html")
+    return logout_then_login(request)

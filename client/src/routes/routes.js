@@ -1,5 +1,9 @@
 const Routes = {
-  root: '/home',
-};
+  home: '/home',
+  notifications: '/notifications',
+  users: '/users',
+  postDetails: '/posts/:id',
+  profile: '/me',
+}
 
-export default Routes;
+export default Routes

@@ -1,0 +1,13 @@
+@mixin flex-display {
+  display: flex;
+}
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin flex-display-justify-center {
+  display: flex;
+  justify-content: center;
+}

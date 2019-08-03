@@ -10,4 +10,4 @@ class TagViewSet(ListModelMixin, GenericViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['name']
+    search_fields = ["name"]
