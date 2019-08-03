@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.contrib.humanize.templatetags.humanize import naturaltime
+from django.contrib.humanize.templatetags.humanize import naturaltime, naturalday
 from rest_framework import serializers
 
 User = get_user_model()
@@ -22,7 +22,11 @@ class VoteField:
 
 
 class UserSerializer(Humanize, serializers.ModelSerializer):
+    date_joined = serializers.SerializerMethodField()
 
     class Meta:
         model = User
         exclude = ["password", "groups", "user_permissions"]
+
+    def get_date_joined(self, obj):
+        return naturalday(obj.date_joined)
